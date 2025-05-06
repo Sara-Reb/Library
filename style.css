@@ -1,7 +1,48 @@
+/* General reset */
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Fonts */
+@font-face {
+  font-family: "AMORIA";
+  src: url("./fonts/AMORIARegular.woff2") format("woff2"),
+    url("./fonts/AMORIARegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* variables */
+:root {
+  font-size: 16px;
+  --header-background: rgb(255, 229, 212);
+}
+
+/* Typography */
+h1 {
+  font-family: "AMORIA", serif;
+  font-size: 4rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  background-color: var(--header-background, lightpink);
+}
+
+.logo img {
+  height: 6em;
+  object-fit: cover;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
 }

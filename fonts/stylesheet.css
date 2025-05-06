@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'AMORIA';
+    src: url('AMORIARegular.woff2') format('woff2'),
+        url('AMORIARegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
