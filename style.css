@@ -20,7 +20,7 @@
 /* variables */
 :root {
   font-size: 16px;
-  --container-background: rgb(239, 255, 253);
+  --container-background: rgb(214, 236, 234);
   --header-background: rgb(255, 229, 212);
   --shadow-color: rgb(177, 177, 177);
   --button-background: rgb(201, 95, 95);
@@ -75,6 +75,7 @@ p {
 /* Library */
 .library-container {
   width: clamp(400px, 100%, 1200px);
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -118,6 +119,15 @@ p {
 
 .search input:focus {
   box-shadow: 2px 2px 5px var(--shadow-color);
+}
+
+/* Books */
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  gap: 2rem;
+  padding: 1rem 2rem;
+  justify-content: center;
 }
 
 /* Book card */
