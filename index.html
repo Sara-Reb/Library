@@ -42,85 +42,38 @@
               <button class="delete icon-button">🗑️</button>
             </div>
           </div>
-          <div class="card">
-            <div class="title">
-              <h2>The Pragmatic Programmer</h2>
-            </div>
-            <div class="author">
-              <p>by</p>
-              <h3 class="author-name">Andy Hunt</h3>
-            </div>
-            <div class="pages">
-              <span>📖</span>
-              <p>320 pages</p>
-            </div>
-            <div class="status">
-              <input type="checkbox" id="read" /><label for="read">Read</label>
-            </div>
-            <div class="delete">
-              <button class="delete icon-button">🗑️</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="title">
-              <h2>The Pragmatic Programmer</h2>
-            </div>
-            <div class="author">
-              <p>by</p>
-              <h3 class="author-name">Andy Hunt</h3>
-            </div>
-            <div class="pages">
-              <span>📖</span>
-              <p>320 pages</p>
-            </div>
-            <div class="status">
-              <input type="checkbox" id="read" /><label for="read">Read</label>
-            </div>
-            <div class="delete">
-              <button class="delete icon-button">🗑️</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="title">
-              <h2>The Pragmatic Programmer</h2>
-            </div>
-            <div class="author">
-              <p>by</p>
-              <h3 class="author-name">Andy Hunt</h3>
-            </div>
-            <div class="pages">
-              <span>📖</span>
-              <p>320 pages</p>
-            </div>
-            <div class="status">
-              <input type="checkbox" id="read" /><label for="read">Read</label>
-            </div>
-            <div class="delete">
-              <button class="delete icon-button">🗑️</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="title">
-              <h2>The Pragmatic Programmer</h2>
-            </div>
-            <div class="author">
-              <p>by</p>
-              <h3 class="author-name">Andy Hunt</h3>
-            </div>
-            <div class="pages">
-              <span>📖</span>
-              <p>320 pages</p>
-            </div>
-            <div class="status">
-              <input type="checkbox" id="read" /><label for="read">Read</label>
-            </div>
-            <div class="delete">
-              <button class="delete icon-button">🗑️</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
+    <dialog open>
+      <form action="" method="dialog">
+        <div class="form-row">
+          <h2>📚 Pop it on the shelf</h2>
+        </div>
+        <div class="form-row">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" />
+        </div>
+        <div class="form-row">
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author" />
+        </div>
+        <div class="form-row">
+          <label for="pages">Number of pages</label>
+          <input type="number" name="pages" id="pages" min="0" />
+        </div>
+        <div class="form-row">
+          <div class="status-div">
+            <input type="checkbox" name="status" id="status-check" />
+            <label for="status-check">Read</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <button class="confirm">Confirm</button>
+        </div>
+        <button class="close icon-button">❌</button>
+      </form>
+    </dialog>
   </body>
   <script src="script.js"></script>
 </html>

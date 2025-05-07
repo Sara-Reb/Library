@@ -167,6 +167,74 @@ p {
   gap: 0.5rem;
 }
 
+/* Dialog form */
+dialog {
+  font-size: 1rem;
+  position: absolute;
+  top: 480px;
+  left: 150px;
+  width: 400px;
+  border-radius: 1rem;
+  border: 2px solid black;
+}
+
+dialog form {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  padding-top: 3rem;
+}
+
+form input:not([type="checkbox"]) {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--shadow-color);
+  outline: none;
+  border-radius: 0.5rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+  font: inherit;
+  font-size: 0.8em;
+  transition: all 0.25s;
+}
+
+form input:not([type="checkbox"]):focus {
+  box-shadow: 2px 2px 5px var(--shadow-color);
+}
+
+.status-div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form .confirm {
+  justify-self: end;
+  background-color: var(--button-background);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+form > div:last-of-type {
+  justify-self: end;
+}
+
+form > div:first-of-type {
+  border-bottom: 1px solid var(--shadow-color);
+  padding-bottom: 1rem;
+}
+
+form .close {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  font-size: 1.7rem;
+}
+
 /* Checkbox */
 input[type="checkbox"] {
   -webkit-appearance: none;
@@ -174,7 +242,7 @@ input[type="checkbox"] {
   cursor: pointer;
   background: none;
   margin: 0;
-  border: 1px solid black;
+  border: 1px solid var(--shadow-color);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
@@ -200,7 +268,7 @@ input[type="checkbox"]:checked::before {
 /* Buttons */
 button {
   transition: all 0.25s;
-  font-family: inherit;
+  font: inherit;
   background: none;
   outline: none;
   border: none;
