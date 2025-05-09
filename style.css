@@ -30,7 +30,7 @@
 /* Typography */
 body {
   font-family: "Courier New", Courier, monospace;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 h1 {
@@ -125,9 +125,10 @@ p {
 .books {
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 1rem 2rem;
   justify-content: center;
+  min-height: 100%;
 }
 
 /* Book card */

@@ -6,6 +6,7 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
 const statusInput = document.querySelector("#status-check");
+const form = document.querySelector("form");
 
 const myLibrary = [];
 
@@ -37,7 +38,6 @@ function displayBook() {
     /* Add book card to books */
     books.appendChild(card);
   });
-  console.log(myLibrary);
 }
 
 /* Show modal form */
@@ -46,8 +46,10 @@ addButton.addEventListener("click", () => {
 });
 
 /* Submit book form and display it */
-submit.addEventListener("click", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (e) => {
+  if (!form.checkValidity()) {
+    return;
+  }
   dialog.close();
   const title = titleInput.value;
   const author = authorInput.value;
