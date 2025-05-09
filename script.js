@@ -49,10 +49,15 @@ function displayBook(myLibrary) {
     const statusLabel = document.createElement("label", { for: "read" });
     statusLabel.innerText = "Read";
     status.setAttribute("checked", `${this.read}`);
+    status.setAttribute("data-id", `${this.id}`);
 
     /* Delete button */
     const deleteDiv = document.createElement("div", { class: "delete" });
-    deleteDiv.innerHTML = <button class="delete icon-button">🗑️</button>;
+    const deleteButton = document.createElement("button", {
+      class: "delete icon-button",
+    });
+    deleteButton.setAttribute("data-id", `${this.id}`);
+    deleteDiv.appendChild(deleteButton);
 
     /* Create book card */
     const card = document.createElement("div", { class: "card" });
