@@ -16,7 +16,7 @@
       </div>
       <div class="library-container">
         <div class="nav">
-          <button>➕</button>
+          <button class="add">➕</button>
           <div class="search">
             <input type="search" placeholder="📚 Search books..." />
             <button class="search-button icon-button">🔍</button>
@@ -47,36 +47,36 @@
           </div>
         </div>
       </div>
-    </div>
-    <dialog open>
-      <form action="" method="dialog">
-        <div class="form-row">
-          <h2>📚 Pop it on the shelf</h2>
-        </div>
-        <div class="form-row">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required />
-        </div>
-        <div class="form-row">
-          <label for="author">Author</label>
-          <input type="text" name="author" id="author" required />
-        </div>
-        <div class="form-row">
-          <label for="pages">Number of pages</label>
-          <input type="number" name="pages" id="pages" min="0" required />
-        </div>
-        <div class="form-row">
-          <div class="status-div">
-            <input type="checkbox" name="status" id="status-check" />
-            <label for="status-check">Read</label>
+      <dialog>
+        <form action="" method="dialog">
+          <div class="form-row">
+            <h2>📚 Pop it on the shelf</h2>
           </div>
-        </div>
-        <div class="form-row">
-          <button class="confirm">Confirm</button>
-        </div>
-        <button class="close icon-button" formnovalidate>❌</button>
-      </form>
-    </dialog>
+          <div class="form-row">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div class="form-row">
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" required />
+          </div>
+          <div class="form-row">
+            <label for="pages">Number of pages</label>
+            <input type="number" name="pages" id="pages" min="0" required />
+          </div>
+          <div class="form-row">
+            <div class="status-div">
+              <input type="checkbox" name="status" id="status-check" />
+              <label for="status-check">Read</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <button class="confirm">Confirm</button>
+          </div>
+          <button class="close icon-button" formnovalidate>❌</button>
+        </form>
+      </dialog>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>

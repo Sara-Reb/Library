@@ -1,4 +1,11 @@
 const books = document.querySelector(".books");
+const addButton = document.querySelector(".add");
+const dialog = document.querySelector("dialog");
+const submit = document.querySelector(".confirm");
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+const pagesInput = document.querySelector("#pages");
+const statusInput = document.querySelector("#status-check");
 
 const myLibrary = [];
 
@@ -11,63 +18,138 @@ function Book(author, title, pages, read) {
   this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(author, title, pages, read) {
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
+function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
   const newBook = new Book(author, title, pages, read);
   myLibrary.push(newBook);
 }
 
-function displayBook(myLibrary) {
+function displayBook() {
+  books.innerHTML = "";
   // loops through the library and display each book on the page
-  myLibrary.forEach(() => {
-    /* Create title div */
-    const titleDiv = document.createElement("div", { class: "title" });
-    const title = document.createElement("h2");
-    title.innerText = this.title;
-    titleDiv.appendChild(title);
-
-    /* Create author div */
-    const authorDiv = document.createElement("div", { class: "author" });
-    authorDiv.innerHTML = "<p>by</p>";
-    const author = document.createElement("h3");
-    author.innerText = this.author;
-    authorDiv.appendChild(author);
-
-    /* Create pages div */
-    const pagesDiv = document.createElement("div", { class: "pages" });
-    pagesDiv.innerHTML = "<span>📖</span>";
-    const pages = document.createElement("p");
-    pages.innerText = this.pages + " pages";
-    pagesDiv.appendChild(pages);
-
-    /* Create status div */
-    const statusDiv = document.createElement("div", { class: "status" });
-    const status = document.createElement("input", {
-      type: "checkbox",
-      id: "read",
-    });
-    const statusLabel = document.createElement("label", { for: "read" });
-    statusLabel.innerText = "Read";
-    status.setAttribute("checked", `${this.read}`);
-    status.setAttribute("data-id", `${this.id}`);
-
-    /* Delete button */
-    const deleteDiv = document.createElement("div", { class: "delete" });
-    const deleteButton = document.createElement("button", {
-      class: "delete icon-button",
-    });
-    deleteButton.setAttribute("data-id", `${this.id}`);
-    deleteDiv.appendChild(deleteButton);
-
-    /* Create book card */
-    const card = document.createElement("div", { class: "card" });
-    card.appendChild(titleDiv);
-    card.appendChild(authorDiv);
-    card.appendChild(pagesDiv);
-    card.appendChild(statusDiv);
-    card.appendChild(deleteDiv);
+  myLibrary.forEach(function render(book) {
+    const card = createBookCard(book);
 
     /* Add book card to books */
     books.appendChild(card);
-  }, this);
+  });
+  console.log(myLibrary);
+}
+
+/* Show modal form */
+addButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+/* Submit book form and display it */
+submit.addEventListener("click", (e) => {
+  e.preventDefault();
+  dialog.close();
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pages = pagesInput.value;
+  const status = statusInput.checked;
+  addBookToLibrary(title, author, pages, status);
+  displayBook();
+});
+
+function createBookCard(book) {
+  /* Create title div */
+  const titleDiv = document.createElement("div");
+  titleDiv.classList.add("title");
+  const title = document.createElement("h2");
+  title.innerText = book.title;
+  titleDiv.appendChild(title);
+
+  /* Create author fiv */
+  const authorDiv = document.createElement("div");
+  authorDiv.classList.add("author");
+  authorDiv.innerHTML = "<p>by </p>";
+  const author = document.createElement("h3");
+  author.classList.add("author-name");
+  author.innerText = book.author;
+  authorDiv.appendChild(author);
+
+  /* Create pages div */
+  const pagesDiv = document.createElement("div");
+  pagesDiv.classList.add("pages");
+  pagesDiv.innerHTML = "<span>📖 </span>";
+  const pages = document.createElement("p");
+  pages.innerText = book.pages + " pages";
+  pagesDiv.appendChild(pages);
+
+  /* Create status div */
+  const statusDiv = document.createElement("div");
+  statusDiv.classList.add("status");
+  const status = document.createElement("input", {
+    type: "checkbox",
+    id: "read",
+  });
+  const statusLabel = document.createElement("label");
+  statusLabel.setAttribute("for", `read-${book.id}`);
+  statusLabel.innerText = "Read";
+  if (book.read) {
+    status.setAttribute("checked", `true`);
+  }
+  status.setAttribute("data-id", `${book.id}`);
+  status.setAttribute("id", `read-${book.id}`);
+  status.setAttribute("type", "checkbox");
+
+  /* Event listener for status checkbox */
+  status.addEventListener("click", (e) => {
+    const book_id = e.target.dataset.id;
+    updateStatus(book_id);
+  });
+
+  statusDiv.appendChild(status);
+  statusDiv.appendChild(statusLabel);
+
+  /* Delete button */
+  const deleteDiv = document.createElement("div");
+  deleteDiv.classList.add("delete");
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete", "icon-button");
+  deleteButton.setAttribute("data-id", `${book.id}`);
+  deleteButton.innerText = "🗑️";
+  deleteButton.addEventListener("click", (e) => {
+    const book_id = e.target.dataset.id;
+    removeBook(book_id);
+  });
+  deleteDiv.appendChild(deleteButton);
+
+  /* Create book card */
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.appendChild(titleDiv);
+  card.appendChild(authorDiv);
+  card.appendChild(pagesDiv);
+  card.appendChild(statusDiv);
+  card.appendChild(deleteDiv);
+
+  return card;
+}
+
+function removeBook(id) {
+  for (const book of myLibrary) {
+    if (book.id === id) {
+      const index = myLibrary.indexOf(book);
+      myLibrary.splice(index, 1);
+      break;
+    }
+  }
+  displayBook();
+}
+
+function updateStatus(id) {
+  for (const book of myLibrary) {
+    if (book.id === id) {
+      book.toggleRead();
+      break;
+    }
+  }
+  displayBook();
 }
