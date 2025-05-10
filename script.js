@@ -31,6 +31,7 @@ function addBookToLibrary(title, author, pages, read) {
 
 function displayBook() {
   books.innerHTML = "";
+  books.appendChild(addButton);
   // loops through the library and display each book on the page
   myLibrary.forEach(function render(book) {
     const card = createBookCard(book);
@@ -57,6 +58,7 @@ form.addEventListener("submit", (e) => {
   const status = statusInput.checked;
   addBookToLibrary(title, author, pages, status);
   displayBook();
+  form.reset();
 });
 
 function createBookCard(book) {
@@ -87,16 +89,11 @@ function createBookCard(book) {
   /* Create status div */
   const statusDiv = document.createElement("div");
   statusDiv.classList.add("status");
-  const status = document.createElement("input", {
-    type: "checkbox",
-    id: "read",
-  });
+  const status = document.createElement("input");
   const statusLabel = document.createElement("label");
   statusLabel.setAttribute("for", `read-${book.id}`);
   statusLabel.innerText = "Read";
-  if (book.read) {
-    status.setAttribute("checked", `true`);
-  }
+  status.checked = book.read;
   status.setAttribute("data-id", `${book.id}`);
   status.setAttribute("id", `read-${book.id}`);
   status.setAttribute("type", "checkbox");
