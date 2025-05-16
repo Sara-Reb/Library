@@ -1,7 +1,6 @@
 const books = document.querySelector(".books");
 const addButton = document.querySelector(".add");
 const dialog = document.querySelector("dialog");
-const submit = document.querySelector(".confirm");
 const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
@@ -10,7 +9,7 @@ const form = document.querySelector("form");
 
 const myLibrary = [];
 
-function Book(author, title, pages, read) {
+function Book(title, author, pages, read) {
   // constructor
   this.author = author;
   this.title = title;
@@ -69,7 +68,7 @@ function createBookCard(book) {
   title.innerText = book.title;
   titleDiv.appendChild(title);
 
-  /* Create author fiv */
+  /* Create author div */
   const authorDiv = document.createElement("div");
   authorDiv.classList.add("author");
   authorDiv.innerHTML = "<p>by </p>";
@@ -133,12 +132,9 @@ function createBookCard(book) {
 }
 
 function removeBook(id) {
-  for (const book of myLibrary) {
-    if (book.id === id) {
-      const index = myLibrary.indexOf(book);
-      myLibrary.splice(index, 1);
-      break;
-    }
+  const index = myLibrary.findIndex((book) => book.id === id);
+  if (index != -1) {
+    myLibrary.splice(index, 1);
   }
   displayBook();
 }
