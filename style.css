@@ -51,7 +51,7 @@ p {
 /* Container */
 .container {
   background-color: var(--container-background);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Header */
@@ -258,6 +258,7 @@ input[type="checkbox"] {
   display: grid;
   justify-items: center;
   align-items: center;
+  transition: 0.2s all;
 }
 
 input[type="checkbox"]::before {
